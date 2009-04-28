@@ -2,12 +2,12 @@
 # Autor: Saulo Marques Ribeiro Ricci
 
 # Constrói todo o programa
-all: posicao.o movimento.o main.o
-	gcc -g -Wall -o testeMovimento *.o
+all: posicao.o movimento.o filaPos.o main.o
+	gcc -g -Wall -o testeFila *.o
 
 # Roda o programa
 run: all
-	./testeMovimento
+	./testeFila
 
 # Realiza uma limpeza dos arquivos de cada módulo criado
 clean:
@@ -24,5 +24,8 @@ posicao.o:
 movimento.o:
 	gcc -g -c Movimento/Movimento.c -o movimento.o
 
+filaPos.o:
+	gcc -g -c FilaPos/FilaPos.c -o filaPos.o
+
 main.o:
-	gcc -g -c Movimento/testeMovimento.c -o main.o
+	gcc -g -c FilaPos/testeFilaPos.c -o main.o

@@ -1,3 +1,6 @@
+#ifndef POSICAO
+#define POSICAO
+
 /*
  Descrição:
  Posicao.h define o TAD Posicação que representa cada posição no tabuleiro do
@@ -46,4 +49,6 @@ void copiaPosicao(Posicao* posicao1, Posicao* posicao2);
  Libera espaco de memória alocada para a Posição apontada pelo parâmetro.
 */
 void liberaEspacoPosicao(Posicao* posicao);
+
+#endif
 

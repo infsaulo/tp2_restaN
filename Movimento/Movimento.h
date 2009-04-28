@@ -1,3 +1,6 @@
+#ifndef MOVIMENTO
+#define MOVIMENTO
+
 /*
  Descrição:
  Movimento.h define o TAD Movimento e a sua estrutura de dados.
@@ -57,4 +60,6 @@ void copiaMovimento(Movimento* movimento1, Movimento* movimento2);
 
 // Libera espaço de memória alocado pelo Movimento apontado pelo parâmetro.
 void liberaEspacoMovimento(Movimento* movimento);
+
+#endif
 
