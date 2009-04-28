@@ -24,3 +24,26 @@ typedef struct Posicao
  outros parâmetros.
 */
 void inicializaPosicao(Posicao* posicao, short linha, short coluna);
+
+/*
+ Retorna a linha da Posição apontada pelo parâmetro.
+*/
+short retornaLinhaPosicao(Posicao* posicao);
+
+/*
+ Retorna a coluna da Posição apontada pelo parâmetro.
+*/
+short retornaColunaPosicao(Posicao* posicao);
+
+/*
+ Copia o conteúdo da posição apontada pelo segundo parâmetro para a posição
+ apontada pelo primeiro parâmetro.
+*/
+void copiaPosicao(Posicao* posicao1, Posicao* posicao2);
+
+
+/*
+ Libera espaco de memória alocada para a Posição apontada pelo parâmetro.
+*/
+void liberaEspacoPosicao(Posicao* posicao);
+
