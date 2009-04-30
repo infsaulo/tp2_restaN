@@ -2,20 +2,18 @@
 # Autor: Saulo Marques Ribeiro Ricci
 
 # Constrói todo o programa
-all: posicao.o movimento.o filaPos.o main.o
-	gcc -g -Wall -o testeFila *.o
+all: posicao.o movimento.o filaPos.o pilhaMov.o main.o
+	gcc -g -Wall -o testePilha *.o
 
 # Roda o programa
 run: all
-	./testeFila
+	./testePilha
 
 # Realiza uma limpeza dos arquivos de cada módulo criado
 clean:
 	rm teste* *.o *~
 		
 # Construção dos diferentes módulos do programa
-
-# Módulos que constroem o TAD de Arvore Hash:
 
 # Constrói o módulo posicao
 posicao.o:
@@ -27,5 +25,8 @@ movimento.o:
 filaPos.o:
 	gcc -g -c FilaPos/FilaPos.c -o filaPos.o
 
+pilhaMov.o:
+	gcc -g -c PilhaMov/PilhaMov.c -o pilhaMov.o	
+
 main.o:
-	gcc -g -c FilaPos/testeFilaPos.c -o main.o
+	gcc -g -c PilhaMov/testePilhaMov.c -o main.o
