@@ -70,6 +70,11 @@ void desenfileiraFilaPos(FilaPos* fila)
 	if(!filaPosVazia(fila))
 	{
 		Cel* retirada = fila->posAtual->prox;
+		if(fila->ultima == fila->posAtual->prox)
+		{
+			fila->ultima = fila->posAtual;
+		}
+		
 		fila->posAtual->prox = fila->posAtual->prox->prox;
 		
 		liberaEspacoCel(retirada);
@@ -83,6 +88,25 @@ void desenfileiraFilaPos(FilaPos* fila)
 short filaPosVazia(FilaPos* fila)
 {
 	return (fila->head->prox == NULL);
+}
+
+/*
+ Copia a FilaPos apontada pelo segundo parâmetro para a filaPos apontada pelo primeiro
+ parâmetro.
+*/
+void copiaFilaPos(FilaPos* fila1, FilaPos* fila2)
+{
+	Cel* apt = fila2->head;
+	
+	while(apt->prox != NULL)
+	{
+		enfileiraFilaPos(fila1, apt->prox->pos);
+		if(fila2->posAtual == apt->prox)
+		{
+			fila1->posAtual = fila1->ultima;
+		}
+		apt = apt->prox;
+	}
 }
 
 /*

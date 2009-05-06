@@ -15,12 +15,20 @@
 
 // Referências necessárias
 #include "../Tabuleiro/Tabuleiro.h"
+#include "../PilhaMov/PilhaMov.h"
 
 /*
  Inicializa o Tabuleiro apontado pelo primeiro parâmetro com o snapshot inicial,
  que está no arquivo, cujo nome é apontado pela segunda posição.
 */
 void inicializaDadosTabuleiro(Tabuleiro* tabuleiro, char* nomeArquivo);
+
+/*
+ Escreve todos os movimentos que foram realizados no Jogo. A pilha de movimentos 
+ do Jogo, que contém tais movimentos é apontada pelo primeiro parâmetro. O nome
+ do arquivo que conterá os movimentos é apontado pelo segundo parâmetro.
+*/
+void escreveMovimentosJogadas(PilhaMov* pilhaMovimentos, char* nomeArquivo);
 
 /*
  Copia a matriz apontada pelo segundo parâmetro para a matriz apontada pelo 

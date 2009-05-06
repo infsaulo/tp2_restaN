@@ -70,7 +70,7 @@ void empilhaPilhaMov(PilhaMov* pilha, Movimento* movimento)
 /*
  Desempilha o Movimento que está no topo da PilhaMov apontada pelo parâmetro.
 */
-void desempilhaPilhaMov(PilhaMov* pilha)
+Movimento* desempilhaPilhaMov(PilhaMov* pilha)
 {
    if(!pilhaMovVazia(pilha))
    {
@@ -79,10 +79,14 @@ void desempilhaPilhaMov(PilhaMov* pilha)
 	   
 	   pilha->topo = retirado->prox;
 	   
-	   liberaEspacoElemento(retirado);
-	   
 	   (pilha->quantidadeElementos)--;
 	}
+	
+	Movimento* movimentoRetirado = (Movimento*)calloc(1, sizeof(Movimento));
+	copiaMovimento(movimentoRetirado, retirado->mov);
+	liberaEspacoElemento(retirado);
+	
+	return movimentoRetirado;
 }
 
 /*
@@ -92,6 +96,35 @@ void desempilhaPilhaMov(PilhaMov* pilha)
 short pilhaMovVazia(PilhaMov* pilha)
 {
    return (pilha->topo == pilha->fundo);
+}
+
+/*
+ Copia a PilhaMov apontada pelo segundo parâmetro para a PilhaMov apontada pelo
+ primeiro parâmetro.
+*/
+void copiaPilhaMov(PilhaMov* pilha1, PilhaMov* pilha2)
+{
+	// Lista que copia os Elementos empilhados na ordem adequada
+	Elemento* lista = (Elemento*)calloc(1, sizeof(Elemento));
+	lista->prox = NULL;
+	
+	Elemento *apt1, *apt2;
+	for(apt1 = pilha2->topo, apt2 = lista; apt1 != pilha2->fundo; apt1 = apt1->prox, apt2 = apt2->prox)
+	{
+		Elemento* novo = (Elemento*)calloc(1, sizeof(Elemento));
+		inicializaElemento(novo, apt1->mov);
+		apt2->prox = novo;
+	}
+	
+	// Finaliza o processo de cópia
+	apt2->prox = pilha1->fundo;
+	
+	apt2 = lista;
+	pilha1->topo = apt2->prox;
+	
+	free(lista);
+	
+	pilha1->quantidadeElementos = pilha2->quantidadeElementos;
 }
 
 /*

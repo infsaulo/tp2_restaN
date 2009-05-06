@@ -150,8 +150,6 @@ FilaPos* retornaPosVaziasTabuleiro(Tabuleiro* tabuleiro)
 	}
 	
 	liberaEspacoPosicao(pos);
-	
-	return posVazias;
 }
 
 /*

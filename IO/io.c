@@ -69,6 +69,62 @@ void inicializaDadosTabuleiro(Tabuleiro* tabuleiro, char* nomeArquivo)
 }
 
 /*
+ Escreve todos os movimentos que foram realizados no Jogo. A pilha de movimentos 
+ do Jogo, que contém tais movimentos é apontada pelo primeiro parâmetro. O nome
+ do arquivo que conterá os movimentos é apontado pelo segundo parâmetro.
+*/
+void escreveMovimentosJogadas(PilhaMov* pilhaMovimentos, char* nomeArquivo)
+{
+	// Arquivo que conterá os dados do Movimentos
+	FILE* arq = fopen(nomeArquivo, "w");
+	
+	// Vetor de Movimentos
+	Movimento** movimentos = (Movimento**)calloc(pilhaMovimentos->quantidadeElementos, sizeof(Movimento*));
+	
+	if(arq != NULL)
+	{
+		printf("Erro ao tentar abrir o arquivo de dados de Movimentos!!!\n");
+		exit(-1);
+	}
+	
+	int pos = pilhaMovimentos->quantidadeElementos - 1;
+	while(!pilhaMovVazia(pilhaMovimentos))
+	{
+		movimentos[pos] = desempilhaPilhaMov(pilhaMovimentos);
+		pos--;
+	}
+	
+	for(pos = 0; pos < pilhaMovimentos->quantidadeElementos; pos++)
+	{
+		fprintf(arq, "<%d %d>: ", movimento[pos]->posicao->linha, movimento[pos]->posicao->coluna);
+		
+		switch(movimento[pos]->movimento)
+		{
+			case CIMA:
+				fprintf(arq, "cima\n");
+				break;
+			
+			case BAIXO:
+				fprintf(arq, "baixo\n");
+				break;
+			
+			case DIREITA:
+				fprintf(arq, "direita\n");
+				break;
+			
+			default:
+				fprintf(arq, "esquerda\n");
+				break;	
+		}
+		
+		liberaEspacoMovimento(movimento[pos]);
+	}
+	
+	fclose(arq);
+	free(movimentos);
+}
+
+/*
  Copia a matriz apontada pelo segundo parâmetro para a matriz apontada pelo 
  primeiro parâmetro. As dimensões são passadas pelo terceiro e quarto parâmetros.
 */

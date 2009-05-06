@@ -73,13 +73,19 @@ void empilhaPilhaMov(PilhaMov* pilha, Movimento* movimento);
 /*
  Desempilha o Movimento que está no topo da PilhaMov apontada pelo parâmetro.
 */
-void desempilhaPilhaMov(PilhaMov* pilha);
+Movimento* desempilhaPilhaMov(PilhaMov* pilha);
 
 /*
  Verifica se a PilhaMov, apontada pelo parâmetro, está vazia. Retorna 0 se a PilhaMov
  não está vazia, ou um outro número caso contrário.
 */
 short pilhaMovVazia(PilhaMov* pilha);
+
+/*
+ Copia a PilhaMov apontada pelo segundo parâmetro para a PilhaMov apontada pelo
+ primeiro parâmetro.
+*/
+void copiaPilhaMov(PilhaMov* pilha1, PilhaMov* pilha2);
 
 /*
  Libera espaço da memória alocada para a PilhaMov apontada pelo parâmetro.

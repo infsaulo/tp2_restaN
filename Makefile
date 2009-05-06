@@ -2,12 +2,12 @@
 # Autor: Saulo Marques Ribeiro Ricci
 
 # Constrói todo o programa
-all: posicao.o movimento.o filaPos.o pilhaMov.o tabuleiro.o io.o main.o
-	gcc -g -Wall -o testeTabuleiro *.o
+all: posicao.o movimento.o filaPos.o pilhaMov.o tabuleiro.o snapshot.o listaSnap.o jogo.o io.o main.o
+	gcc -g -Wall -o testeListaSnap *.o
 
 # Roda o programa
 run: all
-	./testeTabuleiro
+	./testeListaSnap
 
 # Realiza uma limpeza dos arquivos de cada módulo criado
 clean:
@@ -31,8 +31,17 @@ pilhaMov.o:
 tabuleiro.o:
 	gcc -g -c Tabuleiro/Tabuleiro.c -o tabuleiro.o
 
+snapshot.o:
+	gcc -g -c Snapshot/Snapshot.c -o snapshot.o
+
+listaSnap.o:
+	gcc -g -c ListaSnap/ListaSnap.c -o listaSnap.o
+
+jogo.o:
+	gcc -g -c Jogo/Jogo.c -o jogo.o
+	
 io.o:
 	gcc -g -c IO/io.c -o io.o
 
 main.o:
-	gcc -g -c Tabuleiro/testeTabuleiro.c -o main.o
+	gcc -g -c ListaSnap/testeListaSnap.c -o main.o

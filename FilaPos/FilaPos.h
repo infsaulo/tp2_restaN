@@ -83,6 +83,12 @@ void desenfileiraFilaPos(FilaPos* fila);
 short filaPosVazia(FilaPos* fila);
 
 /*
+ Copia a FilaPos apontada pelo segundo parâmetro para a filaPos apontada pelo primeiro
+ parâmetro.
+*/
+void copiaFilaPos(FilaPos* fila1, FilaPos* fila2);
+
+/*
  Libera espaço da memória alocada para a FilaPos apontada pelo parâmetro.
 */
 void liberaEspacoFilaPos(FilaPos* fila);
