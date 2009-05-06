@@ -10,7 +10,7 @@
 */
 
 // Bibliotecas e referências necessárias
-#include <stdlib.h>"
+#include <stdlib.h>
 #include "Jogo.h"
 #include "../IO/io.h"
 
@@ -57,7 +57,7 @@ void jogar(Jogo* jogo)
 */
 void escrevePassosJogo(Jogo* jogo, char* nomeArquivo)
 {
-	escreveMovimentosJogadas(jogo->atual->pilhaMovimentos, nomeArquivo);
+	escreveMovimentosJogadas(jogo->atual->pilhaMovimentos, jogo->atual->tabuleiro, nomeArquivo);
 }
 
 /*

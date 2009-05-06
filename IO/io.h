@@ -26,9 +26,10 @@ void inicializaDadosTabuleiro(Tabuleiro* tabuleiro, char* nomeArquivo);
 /*
  Escreve todos os movimentos que foram realizados no Jogo. A pilha de movimentos 
  do Jogo, que contém tais movimentos é apontada pelo primeiro parâmetro. O nome
- do arquivo que conterá os movimentos é apontado pelo segundo parâmetro.
+ do arquivo que conterá os movimentos é apontado pelo terceiro parâmetro e o 
+ Tabuleiro é apontado pelo segundo parâmetro.
 */
-void escreveMovimentosJogadas(PilhaMov* pilhaMovimentos, char* nomeArquivo);
+void escreveMovimentosJogadas(PilhaMov* pilhaMovimentos, Tabuleiro* tabuleiro, char* nomeArquivo);
 
 /*
  Copia a matriz apontada pelo segundo parâmetro para a matriz apontada pelo 

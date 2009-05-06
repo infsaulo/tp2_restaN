@@ -80,13 +80,16 @@ Movimento* desempilhaPilhaMov(PilhaMov* pilha)
 	   pilha->topo = retirado->prox;
 	   
 	   (pilha->quantidadeElementos)--;
+	   
+   	Movimento* movimentoRetirado = (Movimento*)calloc(1, sizeof(Movimento));
+		copiaMovimento(movimentoRetirado, retirado->mov);
+		liberaEspacoElemento(retirado);
+	
+		return movimentoRetirado;
 	}
 	
-	Movimento* movimentoRetirado = (Movimento*)calloc(1, sizeof(Movimento));
-	copiaMovimento(movimentoRetirado, retirado->mov);
-	liberaEspacoElemento(retirado);
+	return NULL;
 	
-	return movimentoRetirado;
 }
 
 /*
