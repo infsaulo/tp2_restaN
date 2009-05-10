@@ -14,8 +14,8 @@
 */
 
 // Referências necessárias
-#include "../Tabuleiro/Tabuleiro.h"
-#include "../PilhaMov/PilhaMov.h"
+#include "../Resta_N/Tabuleiro/Tabuleiro.h"
+#include "../Resta_N/PilhaMov/PilhaMov.h"
 
 /*
  Inicializa o Tabuleiro apontado pelo primeiro parâmetro com o snapshot inicial,

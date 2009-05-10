@@ -12,7 +12,6 @@
 // Bibliotecas e referências necessárias
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include "io.h"
 
 /*
@@ -80,15 +79,16 @@ void escreveMovimentosJogadas(PilhaMov* pilhaMovimentos, Tabuleiro* tabuleiro, c
 	FILE* arq = fopen(nomeArquivo, "w");
 	
 	// Vetor de Movimentos
-	Movimento** movimentos = (Movimento**)calloc(pilhaMovimentos->quantidadeElementos, sizeof(Movimento*));
+	Movimento* movimentos[pilhaMovimentos->quantidadeElementos];
 	
-	if(arq != NULL)
+	if(arq == NULL)
 	{
 		printf("Erro ao tentar abrir o arquivo de dados de Movimentos!!!\n");
 		exit(-1);
 	}
 	
 	int pos = pilhaMovimentos->quantidadeElementos - 1;
+	int tamanho = pilhaMovimentos->quantidadeElementos;
 	while(!pilhaMovVazia(pilhaMovimentos))
 	{
 		movimentos[pos] = desempilhaPilhaMov(pilhaMovimentos);
@@ -99,9 +99,9 @@ void escreveMovimentosJogadas(PilhaMov* pilhaMovimentos, Tabuleiro* tabuleiro, c
 	fprintf(arq, "%d\n", retornaQuantidadePosicoesOcupadasTabuleiro(tabuleiro));
 	
 	// Escreve os Movimentos
-	for(pos = 0; pos < pilhaMovimentos->quantidadeElementos; pos++)
+	for(pos = 0; pos < tamanho; pos++)
 	{
-		fprintf(arq, "<%d %d>: ", movimentos[pos]->posicao->linha, movimentos[pos]->posicao->coluna);
+		fprintf(arq, "<%d, %d>: ", movimentos[pos]->posicao->linha, movimentos[pos]->posicao->coluna);
 		
 		switch(movimentos[pos]->movimento)
 		{
@@ -126,7 +126,6 @@ void escreveMovimentosJogadas(PilhaMov* pilhaMovimentos, Tabuleiro* tabuleiro, c
 	}
 	
 	fclose(arq);
-	free(movimentos);
 }
 
 /*

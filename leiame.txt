@@ -1,0 +1,57 @@
+1)COMPILAÇÃO:
+	Para compilar o programa invoque "make all" na pasta "TP0". Tal comando 
+compilará cada módulo do programa e assim formará o executável 
+"restaN".
+
+2) EXECUÇÃO:
+	Depois de ter passado pela fase de COMPILAÇÃO invoque o comando 
+"./restaN -s <caminho_arquivo_saida> -e <caminho_arquivo_entrada> -k <nível das jogadas>".
+
+3) EXECUÇÃO DIRETA:
+	Para executar diretamente o programa(compilar diretamente) invoque o comando
+"make run". Isso compilará e rodará o programa com os arquivos "entrada", "saida"
+como parâmetros para os arquivos de entrada e saída dos dados e "1" como o nível
+de jogadas.
+
+4)FORMATO DE ENTRADA:
+	O arquivo de entrada "entrada" contém  a configuração inicial do tabuleiro do
+jogo, em forma de matriz de caracteres possuindo o seguinte formato:
+
+<quantidade_linhas> <quantidade_colunas>
+<Estado_pino_1_1> <Estado_pino_1_2> . . . <Estado_pino_1_quantidade_colunas>
+<Estado_pino_2_1> <Estado_pino_2_2> . . . <Estado_pino_2_quantidade_colunas>
+       .                 .          . . .               .
+       .                 .          . . .               .
+       .                 .          . . .               .       
+<Estado_pino_quantidade_linhas_1> <Estado_pino_quantidade_linhas_2> . . . <Estado_pino_quantidade_linhas_quantidade_colunas>
+
+onde:
+* <Estado_pino_x_y> é um caractere que é '1' quando o pino do tabuleiro
+localizado na linha x e coluna y está preenchida, é '0' quando o pino do tabuleiro
+localizado na linha x e coluna y está vazia e 'x' quando o pino do tabuleiro localizado
+na linhax e coluna y não existe;
+
+* <quantidade_linhas> é a quantidade de linhas que o tabuleiro possui;
+
+* <quantidade_colunas> é a quantidade de colunas que o tabuleiro possui.
+
+5) FORMATO DE SAÍDA:
+	O programa escreve no arquivo "saida" a quantidade de pinos que ainda estão 
+ocupados seguido por uma sequência de movimentos realizados no jogo.
+	Os movimentos são apresentados na ordem em que eles foram realizados:
+
+<quantidade_pinos_restantes>
+<Movimento_1>
+<Movimento_2>
+<Movimento_3>
+	.
+	.
+	.
+<Movimento_(n-1)>
+<Movimento_n>
+
+onde:
+* <Movimento_i> é o i-ésimo movimento realizado no tabuleiro e possui o seguinte
+formato: <x, y>: "movimentação", onde x e y é a posição da peça que foi movimentada
+e "movimentação" é o tipo de movimentação realizada: "cima", "baixo", "esquerda",
+ou "direita".
